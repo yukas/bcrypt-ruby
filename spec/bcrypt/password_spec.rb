@@ -43,6 +43,7 @@ describe "Reading a hashed password" do
   specify "should read the version, cost, salt, and hash" do
     password = BCrypt::Password.new(@hash)
     password.version.should eql("2a")
+    expect(password.version.class).to eq String
     password.cost.should equal(5)
     password.salt.should eql("$2a$05$CCCCCCCCCCCCCCCCCCCCC.")
     password.salt.class.should eq String
